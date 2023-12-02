@@ -1,20 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Campsite from './src/screens/campsite/campsite.view'
+import Profile from './src/screens/profile/profile.view'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const Tab = createBottomTabNavigator()
+    const Stack = createNativeStackNavigator()
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    const BottomTab = () => {
+        return (
+            <Tab.Navigator
+                screenOptions={({ route }) => ({
+                    headerShown: false,
+                    tabBarShowLabel: false,
+                    tabBarHideOnKeyboard: true,
+                    tabBarIcon: ({ focused }) => {
+                        let tabIcon
+
+                        switch (route.name) {
+                            case 'Campsite':
+                                tabIcon = focused
+                                    ? require('./assets/icons/campsite-focused.png')
+                                    : require('./assets/icons/campsite-unfocused.png')
+                                break
+                            case 'Profile':
+                                tabIcon = focused
+                                    ? require('./assets/icons/profile-focused.png')
+                                    : require('./assets/icons/profile-unfocused.png')
+                                break
+                        }
+
+                        return <Image source={tabIcon} />
+                    }
+                })}
+            >
+                <Tab.Screen name="Campsite" component={Campsite} />
+                <Tab.Screen name="Profile" component={Profile} />
+            </Tab.Navigator>
+        )
+    }
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="BottomTab" component={BottomTab} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}

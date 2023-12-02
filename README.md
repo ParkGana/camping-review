@@ -28,3 +28,11 @@ npm run ios
 ##### [ expo 프로젝트 생성 ]
 
 npx create-expo-app . -t expo-template-blank-typescript
+
+<br/>
+
+##### [ navigation 사용 ]
+
+npm install @react-navigation/native @react-navigation/native-stack --save  
+npm install @react-navigation/bottom-tabs @react-navigation/material-top-tabs --save  
+expo install react-native-screens react-native-safe-area-context
