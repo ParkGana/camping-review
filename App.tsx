@@ -2,7 +2,7 @@ import { Image } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Campsite from './src/screens/campsite/campsite.view'
+import CampsiteList from './src/screens/campsite/campsite-list.view'
 import Profile from './src/screens/profile/profile.view'
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
                         let tabIcon
 
                         switch (route.name) {
-                            case 'Campsite':
+                            case 'CampsiteList':
                                 tabIcon = focused
                                     ? require('./assets/icons/campsite-focused.png')
                                     : require('./assets/icons/campsite-unfocused.png')
@@ -36,7 +36,7 @@ export default function App() {
                     }
                 })}
             >
-                <Tab.Screen name="Campsite" component={Campsite} />
+                <Tab.Screen name="CampsiteList" component={CampsiteList} />
                 <Tab.Screen name="Profile" component={Profile} />
             </Tab.Navigator>
         )
