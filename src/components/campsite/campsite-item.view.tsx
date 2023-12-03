@@ -1,18 +1,18 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { TouchableOpacity, View, Text, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { styles } from './campsite-item.style'
+import { CampSiteDataType } from '../../datas/campsite.data'
 
-type ItemType = {
-    id: number
-    name: string
-    address: string
-    type: string[]
-    feeling: string
-}
+const CampsiteItem = ({ value }: { value: CampSiteDataType }) => {
+    const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
-const CampsiteItem = ({ value }: { value: ItemType }) => {
     return (
-        <View style={styles.Container}>
+        <TouchableOpacity
+            style={styles.Container}
+            onPress={() => navigation.push('CampsiteDetail', { campsiteId: value.id, value })}
+        >
             <View>
                 <Text style={styles.TitleText}>{value.name}</Text>
                 <Text style={styles.AddressText}>{value.address}</Text>
@@ -36,7 +36,7 @@ const CampsiteItem = ({ value }: { value: ItemType }) => {
                     style={styles.FeelingIcon}
                 />
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CampsiteList from './src/screens/campsite/campsite-list.view'
 import Profile from './src/screens/profile/profile.view'
+import CampsiteDetail from './src/screens/campsite/campsite-detail.view'
 
 export default function App() {
     const Tab = createBottomTabNavigator()
@@ -46,6 +47,7 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="BottomTab" component={BottomTab} />
+                <Stack.Screen name="CampsiteDetail" component={CampsiteDetail} />
             </Stack.Navigator>
         </NavigationContainer>
     )
