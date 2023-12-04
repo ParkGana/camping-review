@@ -8,6 +8,7 @@ export interface CampSiteDataType {
         good: string[]
         bad: string[]
     }
+    accountId: number
 }
 
 export const CampSiteData: CampSiteDataType[] = [
@@ -20,7 +21,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['데크가 계단식으로 구분되어있어 프라이빗하다'],
             bad: ['편의점이 없다', '데크를 오가는 길이 가파르다']
-        }
+        },
+        accountId: 1
     },
     {
         id: 2,
@@ -31,7 +33,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: [],
             bad: ['편의점이 없다', '시설이 더럽다', '리버뷰의 메리트가 없다']
-        }
+        },
+        accountId: 1
     },
     {
         id: 3,
@@ -42,7 +45,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: [],
             bad: ['시설이 더럽다']
-        }
+        },
+        accountId: 1
     },
     {
         id: 4,
@@ -53,7 +57,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['편의점이 있다.'],
             bad: []
-        }
+        },
+        accountId: 1
     },
     {
         id: 5,
@@ -64,7 +69,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['뷰가 좋다.', '외부 공간에 방풍막이 있다.'],
             bad: []
-        }
+        },
+        accountId: 1
     },
     {
         id: 6,
@@ -75,7 +81,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['편의점이 있다', '그날그날 원하는 자리에 텐트를 설치할 수 있다.', '계곡이 있다.'],
             bad: []
-        }
+        },
+        accountId: 1
     },
     {
         id: 7,
@@ -86,7 +93,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['외부 공간에 방풍막이 있다.'],
             bad: []
-        }
+        },
+        accountId: 1
     },
     {
         id: 8,
@@ -97,7 +105,8 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['수영장이 있다.', '외부 공간에 방풍막이 있다'],
             bad: []
-        }
+        },
+        accountId: 1
     },
     {
         id: 9,
@@ -108,6 +117,7 @@ export const CampSiteData: CampSiteDataType[] = [
         point: {
             good: ['밤에 별이 잘 보인다.'],
             bad: []
-        }
+        },
+        accountId: 1
     }
 ]

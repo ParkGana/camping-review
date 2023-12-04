@@ -19,6 +19,7 @@ const SignUp = () => {
                     placeholder={'비밀번호를 한 번 더 입력해 주세요.'}
                     secureTextEntry
                 />
+                <TextInput style={styles.TextInput} placeholder={'이름을 입력해 주세요.'} />
             </View>
             <View style={styles.ButtonContainer}>
                 <View style={styles.Button}>
