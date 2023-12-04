@@ -36,3 +36,9 @@ npx create-expo-app . -t expo-template-blank-typescript
 npm install @react-navigation/native @react-navigation/native-stack --save  
 npm install @react-navigation/bottom-tabs @react-navigation/material-top-tabs --save  
 expo install react-native-screens react-native-safe-area-context
+
+<br/>
+
+##### [ axios 사용 ]
+
+npm install axios --save
