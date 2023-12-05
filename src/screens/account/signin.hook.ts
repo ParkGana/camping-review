@@ -1,11 +1,14 @@
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { SignInAPI } from '../../api/account.api'
 import { Alert } from 'react-native'
+import { UserContext } from '../../../App'
 
 export const useSignIn = () => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
+    const { setUserEmail } = useContext(UserContext)
 
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
@@ -19,8 +22,8 @@ export const useSignIn = () => {
     const handleSignIn = () => {
         SignInAPI({ email, password })
             .then((user) => {
-                console.log(user)
-                navigation.replace('Connection', { user })
+                setUserEmail(user.email)
+                navigation.replace('Connection')
             })
             .catch((error) => {
                 Alert.alert('로그인 도중에 문제가 발생했습니다.', error.errorMessage, [{ text: '확인' }], {

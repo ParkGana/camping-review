@@ -11,7 +11,6 @@ export async function SignUpAPI(dto: SignUpDTO): Promise<UserModel> {
 
         return new UserModel(user.data)
     } catch (e) {
-        console.log(e)
         throw axios.isAxiosError(e) ? e.response?.data : e
     }
 }
@@ -23,7 +22,17 @@ export async function SignInAPI(dto: SignInDTO): Promise<UserModel> {
 
         return new UserModel(user.data)
     } catch (e) {
-        console.log(e)
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
+
+/* 계정 정보 조회 */
+export async function GetProfileAPI(email: string): Promise<UserModel> {
+    try {
+        const user = await axios.get(`${BaseUrl}/user/profile/${email}`)
+
+        return new UserModel(user.data)
+    } catch (e) {
         throw axios.isAxiosError(e) ? e.response?.data : e
     }
 }

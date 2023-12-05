@@ -1,3 +1,4 @@
+import { createContext, useState } from 'react'
 import { Image } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -9,9 +10,13 @@ import SignUp from './src/screens/account/signup.view'
 import CampsiteDetail from './src/screens/campsite/campsite-detail.view'
 import Connection from './src/screens/connection/connection.view'
 
+export const UserContext = createContext<any>(null)
+
 export default function App() {
     const Tab = createBottomTabNavigator()
     const Stack = createNativeStackNavigator()
+
+    const [userEmail, setUserEmail] = useState<string>()
 
     const BottomTab = () => {
         return (
@@ -47,14 +52,16 @@ export default function App() {
     }
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="SignIn" component={SignIn} />
-                <Stack.Screen name="SignUp" component={SignUp} />
-                <Stack.Screen name="Connection" component={Connection} />
-                <Stack.Screen name="BottomTab" component={BottomTab} />
-                <Stack.Screen name="CampsiteDetail" component={CampsiteDetail} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <UserContext.Provider value={{ userEmail, setUserEmail }}>
+            <NavigationContainer>
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="SignIn" component={SignIn} />
+                    <Stack.Screen name="SignUp" component={SignUp} />
+                    <Stack.Screen name="Connection" component={Connection} />
+                    <Stack.Screen name="BottomTab" component={BottomTab} />
+                    <Stack.Screen name="CampsiteDetail" component={CampsiteDetail} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </UserContext.Provider>
     )
 }
