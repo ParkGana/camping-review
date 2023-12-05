@@ -20,7 +20,7 @@ export const useSignIn = () => {
         SignInAPI({ email, password })
             .then((user) => {
                 console.log(user)
-                navigation.replace('BottomTab', { screen: 'CampsiteList' })
+                navigation.replace('Connection', { user })
             })
             .catch((error) => {
                 Alert.alert('로그인 도중에 문제가 발생했습니다.', error.errorMessage, [{ text: '확인' }], {

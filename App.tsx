@@ -7,6 +7,7 @@ import Profile from './src/screens/profile/profile.view'
 import SignIn from './src/screens/account/signin.view'
 import SignUp from './src/screens/account/signup.view'
 import CampsiteDetail from './src/screens/campsite/campsite-detail.view'
+import Connection from './src/screens/connection/connection.view'
 
 export default function App() {
     const Tab = createBottomTabNavigator()
@@ -50,6 +51,7 @@ export default function App() {
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="SignIn" component={SignIn} />
                 <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="Connection" component={Connection} />
                 <Stack.Screen name="BottomTab" component={BottomTab} />
                 <Stack.Screen name="CampsiteDetail" component={CampsiteDetail} />
             </Stack.Navigator>
