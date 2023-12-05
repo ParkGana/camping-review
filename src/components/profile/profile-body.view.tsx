@@ -1,9 +1,9 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { styles } from './profile-body.style'
-import { AccountData, AccountDataType } from '../../datas/account.data'
+import { UserModel } from '../../model/user.model'
 
-const ProfileBody = ({ value }: { value: AccountDataType }) => {
+const ProfileBody = ({ value }: { value: UserModel }) => {
     return (
         <View>
             <View style={styles.ProfileContainer}>
@@ -24,13 +24,7 @@ const ProfileBody = ({ value }: { value: AccountDataType }) => {
             <View style={styles.InfoContainer}>
                 <View style={styles.DataContainer}>
                     <Text style={styles.FieldText}>연결 계정</Text>
-                    {AccountData.findIndex((item) => item.id === value.connectAccountId) > -1 ? (
-                        <Text style={styles.ValueText}>
-                            {AccountData[AccountData.findIndex((item) => item.id === value.connectAccountId)].email}
-                        </Text>
-                    ) : (
-                        <Text style={styles.ValueText}> </Text>
-                    )}
+                    <Text style={styles.ValueText}>{value.connectionEmail ?? ' '}</Text>
                 </View>
             </View>
         </View>

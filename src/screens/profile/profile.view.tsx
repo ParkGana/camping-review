@@ -2,9 +2,11 @@ import React from 'react'
 import { StatusBar, View, Text, ScrollView } from 'react-native'
 import { styles } from './profile.style'
 import ProfileBody from '../../components/profile/profile-body.view'
-import { AccountData } from '../../datas/account.data'
+import { useProfile } from './profile.hook'
 
 const Profile = () => {
+    const { datas } = useProfile()
+
     return (
         <ScrollView style={styles.Container} showsVerticalScrollIndicator={false}>
             <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
@@ -13,7 +15,7 @@ const Profile = () => {
                     <Text style={styles.EditText}>편집</Text>
                 </View>
             </View>
-            <ProfileBody value={AccountData[0]} />
+            {datas.profile && <ProfileBody value={datas.profile} />}
         </ScrollView>
     )
 }
