@@ -28,11 +28,11 @@ export const styles = StyleSheet.create({
         lineHeight: Typography.body2.lineHeight,
         marginBottom: 10
     },
-    ArrayContainer: {
+    TimeContainer: {
         flexDirection: 'row',
         alignItems: 'center'
     },
-    TypeText: {
+    TimeText: {
         color: Color.black,
         fontSize: Typography.body3.fontSize,
         fontWeight: Typography.body3.fontWeight,
