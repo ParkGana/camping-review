@@ -9,6 +9,7 @@ import SignIn from './src/screens/account/signin.view'
 import SignUp from './src/screens/account/signup.view'
 import CampsiteDetail from './src/screens/campsite/campsite-detail.view'
 import Connection from './src/screens/connection/connection.view'
+import CampsiteAdd from './src/screens/campsite/campsite-add.view'
 
 export const UserContext = createContext<any>(null)
 
@@ -60,6 +61,7 @@ export default function App() {
                     <Stack.Screen name="Connection" component={Connection} />
                     <Stack.Screen name="BottomTab" component={BottomTab} />
                     <Stack.Screen name="CampsiteDetail" component={CampsiteDetail} />
+                    <Stack.Screen name="CampsiteAdd" component={CampsiteAdd} />
                 </Stack.Navigator>
             </NavigationContainer>
         </UserContext.Provider>
