@@ -26,6 +26,15 @@ export async function SignInAPI(dto: SignInDTO): Promise<UserModel> {
     }
 }
 
+/* 로그아웃 */
+export async function LogoutAPI(): Promise<void> {
+    try {
+        await axios.post(`${BaseUrl}/user/logout`)
+    } catch (e) {
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
+
 /* 계정 정보 조회 */
 export async function GetProfileAPI(email: string): Promise<UserModel> {
     try {

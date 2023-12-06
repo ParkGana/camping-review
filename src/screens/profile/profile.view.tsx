@@ -1,11 +1,11 @@
 import React from 'react'
-import { StatusBar, View, Text, ScrollView } from 'react-native'
+import { StatusBar, View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import { styles } from './profile.style'
 import ProfileBody from '../../components/profile/profile-body.view'
 import { useProfile } from './profile.hook'
 
 const Profile = () => {
-    const { datas } = useProfile()
+    const { datas, events } = useProfile()
 
     return (
         <ScrollView style={styles.Container} showsVerticalScrollIndicator={false}>
@@ -16,6 +16,9 @@ const Profile = () => {
                 </View>
             </View>
             {datas.profile && <ProfileBody value={datas.profile} />}
+            <TouchableOpacity style={styles.Button} onPress={events.handleLogout}>
+                <Text style={styles.ButtonText}>로그아웃</Text>
+            </TouchableOpacity>
         </ScrollView>
     )
 }
