@@ -4,13 +4,14 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { styles } from './campsite-detail.style'
 import CampsiteInfo from '../../components/campsite/campsite-info.view'
-import { TravelData } from '../../datas/travel.data'
-import TravelItem from '../../components/travel/travel-item.view'
+import { useCampsiteDetail } from './campsite-detail.hook'
 
 const CampsiteDetail = ({ route }: any) => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
-    const { campsiteId, value } = route.params
+    const { campsiteId } = route.params
+
+    const { datas } = useCampsiteDetail(campsiteId)
 
     return (
         <ScrollView style={styles.Container} showsVerticalScrollIndicator={false}>
@@ -23,12 +24,7 @@ const CampsiteDetail = ({ route }: any) => {
                     <Text style={styles.EditText}>편집</Text>
                 </View>
             </View>
-            <CampsiteInfo value={value} />
-            <View style={styles.TravelContainer}>
-                {TravelData.map((item, index) => (
-                    <>{campsiteId === item.campsiteId && <TravelItem key={index} value={item} />}</>
-                ))}
-            </View>
+            {datas.campsite && <CampsiteInfo value={datas.campsite} />}
         </ScrollView>
     )
 }

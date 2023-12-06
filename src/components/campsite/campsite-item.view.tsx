@@ -9,10 +9,7 @@ const CampsiteItem = ({ value }: { value: CampsiteModel }) => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
     return (
-        <TouchableOpacity
-            style={styles.Container}
-            onPress={() => navigation.push('CampsiteDetail', { campsiteId: value.id, value })}
-        >
+        <TouchableOpacity style={styles.Container} onPress={() => navigation.push('CampsiteDetail', { campsiteId: value.id })}>
             <View>
                 <Text style={styles.TitleText}>{value.name}</Text>
                 <Text style={styles.AddressText}>{value.address}</Text>

@@ -26,11 +26,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 10
     },
-    PointDataContainer: {
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        margin: 10
-    },
     FieldText: {
         color: Color.gray,
         fontSize: Typography.body2.fontSize,
@@ -44,30 +39,7 @@ export const styles = StyleSheet.create({
         fontWeight: Typography.title3.fontWeight,
         lineHeight: Typography.title3.lineHeight
     },
-    AddressText: {
-        color: Color.black,
-        fontSize: Typography.body2.fontSize,
-        fontWeight: Typography.body2.fontWeight,
-        lineHeight: Typography.body2.lineHeight
-    },
-    TypeArrayContainer: {
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    TypeText: {
-        color: Color.lightgray,
-        fontSize: Typography.body2.fontSize,
-        fontWeight: Typography.body2.fontWeight,
-        lineHeight: Typography.body2.lineHeight,
-        marginRight: 15
-    },
-    IncludeTypeText: {
-        color: Color.black
-    },
-    PointArrayContainer: {
-        marginTop: 20
-    },
-    PointText: {
+    ValueText: {
         color: Color.black,
         fontSize: Typography.body2.fontSize,
         fontWeight: Typography.body2.fontWeight,

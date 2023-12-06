@@ -14,6 +14,17 @@ export async function GetCampsiteListAPI(email: string): Promise<CampsiteModel[]
     }
 }
 
+/* 캠핑장 정보 조회 */
+export async function GetCampsiteDetailAPI(id: string): Promise<CampsiteModel> {
+    try {
+        const campsite = await axios.get(`${BaseUrl}/campsite/${id}`)
+
+        return new CampsiteModel(campsite.data)
+    } catch (e) {
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
+
 /* 캠핑장 추가 */
 export async function CreateCampsiteAPI(dto: CampsiteAddDTO): Promise<void> {
     try {
