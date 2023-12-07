@@ -5,17 +5,19 @@ export class CampsiteModel {
         this.id = properties.id
         this.name = properties.name
         this.address = properties.address
-        this.feeling = properties.feeling
         this.inTime = properties.inTime
         this.outTime = properties.outTime
+        this.type = properties.type
+        this.feeling = properties.feeling
         this.user = new UserModel(properties.user)
     }
 
     id: string
     name: string
     address: string
-    feeling: string
     inTime: string
     outTime: string
+    type: string
+    feeling: string
     user: UserModel
 }

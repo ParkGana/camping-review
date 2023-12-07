@@ -1,8 +1,9 @@
 export interface CampsiteAddDTO {
     name: string
     address: string
-    feeling: string
     inTime: string
     outTime: string
+    type: string
+    feeling: string
     userEmail: string
 }

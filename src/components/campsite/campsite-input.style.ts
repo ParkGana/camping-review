@@ -52,13 +52,39 @@ export const styles = StyleSheet.create({
         borderBottomColor: Color.lightgray,
         backgroundColor: Color.white
     },
+    TypeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    CheckContainer: {
+        padding: 5,
+        marginHorizontal: 10,
+        borderWidth: 1,
+        borderColor: Color.white
+    },
+    SelectedCheckContainer: {
+        borderWidth: 1,
+        borderColor: 'gray',
+        borderRadius: 4
+    },
+    TypeText: {
+        color: Color.lightgray,
+        fontSize: Typography.body2.fontSize,
+        fontWeight: Typography.body2.fontWeight,
+        lineHeight: Typography.body2.lineHeight
+    },
+    SelectedTypeText: {
+        color: Color.black
+    },
     FeelingContainer: {
         flexDirection: 'row',
         alignItems: 'center'
     },
     IconContainer: {
         padding: 5,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        borderWidth: 1,
+        borderColor: Color.white
     },
     SelectedIconContainer: {
         borderWidth: 1,

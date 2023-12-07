@@ -3,6 +3,8 @@ import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './campsite-input.style'
 import { useCampsiteInput } from './campsite-input.hook'
 
+const campsiteType = ['글램핑', '노지', '오토', '카라반']
+
 const CampsiteInput = () => {
     const { datas, events } = useCampsiteInput()
 
@@ -52,6 +54,36 @@ const CampsiteInput = () => {
                         value={datas.outTime}
                         onChangeText={(text) => events.setOutTime(text)}
                     />
+                </View>
+                <View style={styles.DataContainer}>
+                    <Text style={styles.FieldText}>이용 형태</Text>
+                    <View style={styles.TypeContainer}>
+                        {campsiteType.map((type, index) => (
+                            <TouchableOpacity
+                                key={index}
+                                style={[
+                                    styles.CheckContainer,
+                                    datas.types.includes(type) && styles.SelectedCheckContainer
+                                ]}
+                                onPress={() =>
+                                    datas.types.includes(type)
+                                        ? events.setTypes(datas.types.filter((item) => item !== type))
+                                        : events.setTypes((prev) => {
+                                              return [...prev, type]
+                                          })
+                                }
+                            >
+                                <Text
+                                    style={[
+                                        styles.TypeText,
+                                        datas.types.includes(type) && styles.SelectedTypeText
+                                    ]}
+                                >
+                                    {type}
+                                </Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
                 </View>
                 <View style={styles.DataContainer}>
                     <Text style={styles.FieldText}>만족도</Text>

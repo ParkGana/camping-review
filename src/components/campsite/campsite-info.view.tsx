@@ -27,12 +27,20 @@ const CampsiteInfo = ({ value }: { value: CampsiteModel }) => {
                 <Text style={styles.ValueText}>{value.address}</Text>
             </View>
             <View style={styles.DataContainer}>
-                <Text style={styles.FieldText}>입실 시간</Text>
-                <Text style={styles.ValueText}>{value.inTime}</Text>
+                <Text style={styles.FieldText}>이용 시간</Text>
+                <Text style={styles.ValueText}>
+                    입실 {value.inTime} / 퇴실 {value.outTime}
+                </Text>
             </View>
             <View style={styles.DataContainer}>
-                <Text style={styles.FieldText}>퇴실 시간</Text>
-                <Text style={styles.ValueText}>{value.outTime}</Text>
+                <Text style={styles.FieldText}>이용 형태</Text>
+                <View style={styles.TypeContainer}>
+                    {value.type.split(',').map((type, index) => (
+                        <Text style={styles.TypeText} key={index}>
+                            {type}
+                        </Text>
+                    ))}
+                </View>
             </View>
         </View>
     )

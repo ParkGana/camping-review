@@ -27,19 +27,32 @@ export const styles = StyleSheet.create({
         margin: 10
     },
     FieldText: {
+        width: '20%',
         color: Color.gray,
         fontSize: Typography.body2.fontSize,
         fontWeight: Typography.body2.fontWeight,
-        lineHeight: Typography.body2.lineHeight,
-        marginRight: 20
+        lineHeight: Typography.body2.lineHeight
     },
     NameText: {
+        width: '80%',
         color: Color.black,
         fontSize: Typography.title3.fontSize,
         fontWeight: Typography.title3.fontWeight,
         lineHeight: Typography.title3.lineHeight
     },
     ValueText: {
+        width: '80%',
+        color: Color.black,
+        fontSize: Typography.body2.fontSize,
+        fontWeight: Typography.body2.fontWeight,
+        lineHeight: Typography.body2.lineHeight
+    },
+    TypeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    TypeText: {
+        marginRight: 10,
         color: Color.black,
         fontSize: Typography.body2.fontSize,
         fontWeight: Typography.body2.fontWeight,
