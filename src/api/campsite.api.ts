@@ -2,6 +2,7 @@ import axios from 'axios'
 import { BaseUrl } from '../../api.config'
 import { CampsiteModel } from '../model/campsite.model'
 import { CampsiteAddDTO } from '../dto/campsite-add.dto'
+import { CampsiteEditDTO } from '../dto/campsite-edit.dto'
 
 /* 캠핑장 목록 조회 */
 export async function GetCampsiteListAPI(email: string): Promise<CampsiteModel[]> {
@@ -29,6 +30,15 @@ export async function GetCampsiteDetailAPI(id: string): Promise<CampsiteModel> {
 export async function CreateCampsiteAPI(dto: CampsiteAddDTO): Promise<void> {
     try {
         await axios.post(`${BaseUrl}/campsite/create`, dto)
+    } catch (e) {
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
+
+/* 캠핑장 수정 */
+export async function UpdateCampsiteAPI(dto: CampsiteEditDTO): Promise<void> {
+    try {
+        await axios.post(`${BaseUrl}/campsite/update`, dto)
     } catch (e) {
         throw axios.isAxiosError(e) ? e.response?.data : e
     }

@@ -11,7 +11,7 @@ const CampsiteDetail = ({ route }: any) => {
 
     const { campsiteId } = route.params
 
-    const { datas } = useCampsiteDetail(campsiteId)
+    const { datas, events } = useCampsiteDetail(campsiteId)
 
     return (
         <ScrollView style={styles.Container} showsVerticalScrollIndicator={false}>
@@ -20,9 +20,9 @@ const CampsiteDetail = ({ route }: any) => {
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={require('../../../assets/icons/back.png')} style={styles.BackIcon} />
                 </TouchableOpacity>
-                <View>
+                <TouchableOpacity onPress={events.moveToEdit}>
                     <Text style={styles.EditText}>편집</Text>
-                </View>
+                </TouchableOpacity>
             </View>
             {datas.campsite && <CampsiteInfo value={datas.campsite} />}
         </ScrollView>

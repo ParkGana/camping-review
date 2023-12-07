@@ -2,11 +2,12 @@ import React from 'react'
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './campsite-input.style'
 import { useCampsiteInput } from './campsite-input.hook'
+import { CampsiteModel } from '../../model/campsite.model'
 
 const campsiteType = ['글램핑', '노지', '오토', '카라반']
 
-const CampsiteInput = () => {
-    const { datas, events } = useCampsiteInput()
+const CampsiteInput = ({ edit, value }: { edit?: boolean; value?: CampsiteModel }) => {
+    const { datas, events } = useCampsiteInput(edit, value)
 
     return (
         <View>
@@ -73,12 +74,7 @@ const CampsiteInput = () => {
                                           })
                                 }
                             >
-                                <Text
-                                    style={[
-                                        styles.TypeText,
-                                        datas.types.includes(type) && styles.SelectedTypeText
-                                    ]}
-                                >
+                                <Text style={[styles.TypeText, datas.types.includes(type) && styles.SelectedTypeText]}>
                                     {type}
                                 </Text>
                             </TouchableOpacity>

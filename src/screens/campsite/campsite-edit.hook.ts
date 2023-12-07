@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CampsiteModel } from '../../model/campsite.model'
 import { GetCampsiteDetailAPI } from '../../api/campsite.api'
 
-export const useCampsiteDetail = (campsiteId: string) => {
+export const useCampsiteEdit = (campsiteId: string) => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
     const [campsite, setCampsite] = useState<CampsiteModel>()
@@ -22,9 +22,9 @@ export const useCampsiteDetail = (campsiteId: string) => {
             })
     }, [])
 
-    /* 캠핑장 편집 페이지로 이동 */
-    const moveToEdit = () => {
-        navigation.replace('CampsiteEdit', { campsiteId })
+    /* 이전 페이지로 이동 */
+    const moveToBack = () => {
+        navigation.replace('BottomTab', { screen: 'CampsiteList' })
     }
 
     return {
@@ -32,7 +32,7 @@ export const useCampsiteDetail = (campsiteId: string) => {
             campsite
         },
         events: {
-            moveToEdit
+            moveToBack
         }
     }
 }
