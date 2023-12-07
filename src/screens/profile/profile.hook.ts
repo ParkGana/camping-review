@@ -25,6 +25,12 @@ export const useProfile = () => {
             })
     }, [])
 
+    /* 특징 페이지로 이동 */
+    const moveToCharacteristic = () => {
+        navigation.replace('Characteristic')
+    }
+
+    /* 로그아웃 */
     const handleLogout = () => {
         LogoutAPI()
             .then(() => {
@@ -56,6 +62,7 @@ export const useProfile = () => {
             profile
         },
         events: {
+            moveToCharacteristic,
             handleLogout
         }
     }

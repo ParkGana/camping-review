@@ -11,6 +11,7 @@ import CampsiteDetail from './src/screens/campsite/campsite-detail.view'
 import Connection from './src/screens/connection/connection.view'
 import CampsiteAdd from './src/screens/campsite/campsite-add.view'
 import CampsiteEdit from './src/screens/campsite/campsite-edit.view'
+import Characteristic from './src/screens/characteristic/characteristic.view'
 
 export const UserContext = createContext<any>(null)
 
@@ -64,6 +65,7 @@ export default function App() {
                     <Stack.Screen name="CampsiteDetail" component={CampsiteDetail} />
                     <Stack.Screen name="CampsiteAdd" component={CampsiteAdd} />
                     <Stack.Screen name="CampsiteEdit" component={CampsiteEdit} />
+                    <Stack.Screen name="Characteristic" component={Characteristic} />
                 </Stack.Navigator>
             </NavigationContainer>
         </UserContext.Provider>

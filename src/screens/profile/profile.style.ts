@@ -18,7 +18,23 @@ export const styles = StyleSheet.create({
         fontWeight: Typography.body1.fontWeight,
         lineHeight: Typography.body1.lineHeight
     },
-    Button: {
+    CharacteristicContainer: {
+        width: '100%',
+        alignItems: 'center',
+        padding: 15,
+        marginTop: 10,
+        borderWidth: 2,
+        borderColor: Color.gray,
+        borderRadius: 10,
+        backgroundColor: Color.white
+    },
+    CharacteristicText: {
+        color: Color.black,
+        fontSize: Typography.body2.fontSize,
+        fontWeight: Typography.body2.fontWeight,
+        lineHeight: Typography.body2.lineHeight
+    },
+    LogoutContainer: {
         width: '100%',
         alignItems: 'center',
         padding: 15,
@@ -26,7 +42,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: Color.black
     },
-    ButtonText: {
+    LogoutText: {
         color: Color.white,
         fontSize: Typography.body2.fontSize,
         fontWeight: Typography.body2.fontWeight,

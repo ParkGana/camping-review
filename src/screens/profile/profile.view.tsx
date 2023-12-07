@@ -16,8 +16,11 @@ const Profile = () => {
                 </View>
             </View>
             {datas.profile && <ProfileBody value={datas.profile} />}
-            <TouchableOpacity style={styles.Button} onPress={events.handleLogout}>
-                <Text style={styles.ButtonText}>로그아웃</Text>
+            <TouchableOpacity style={styles.CharacteristicContainer} onPress={events.moveToCharacteristic}>
+                <Text style={styles.CharacteristicText}>카테고리 관리</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.LogoutContainer} onPress={events.handleLogout}>
+                <Text style={styles.LogoutText}>로그아웃</Text>
             </TouchableOpacity>
         </ScrollView>
     )
