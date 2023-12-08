@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { styles } from './characteristic-item.style'
-import { CharacteristicDataType } from '../../datas/characteristic.data'
+import { CharacteristicModel } from '../../model/characteristic.model'
 
-const CharacteristicItem = ({ value }: { value: CharacteristicDataType }) => {
+const CharacteristicItem = ({ value }: { value: CharacteristicModel }) => {
     return (
         <View style={styles.Container}>
-            <Text style={styles.CharacteristicText}>{value.name}</Text>
+            <Text style={styles.CharacteristicText}>{value.contents}</Text>
             <Text style={styles.DeleteText}>삭제</Text>
         </View>
     )
