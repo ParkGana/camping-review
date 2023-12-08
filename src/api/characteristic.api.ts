@@ -22,3 +22,12 @@ export async function CreateCharacteristicAPI(dto: CharacteristicAddDTO): Promis
         throw axios.isAxiosError(e) ? e.response?.data : e
     }
 }
+
+/* 특징 삭제 */
+export async function DeleteCharacteristicAPI(characteristicId: string): Promise<void> {
+    try {
+        await axios.delete(`${BaseUrl}/characteristic/delete/${characteristicId}`)
+    } catch (e) {
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
