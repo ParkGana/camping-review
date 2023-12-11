@@ -2,9 +2,9 @@ import { useState, useContext } from 'react'
 import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { UserContext } from '../../../App'
 import { CreateCampsiteAPI, UpdateCampsiteAPI } from '../../api/campsite.api'
 import { CampsiteModel } from '../../model/campsite.model'
+import { UserContext } from '../../context/user.context'
 
 export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()

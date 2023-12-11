@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from 'react'
 import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { UserContext } from '../../../App'
 import { CampsiteModel } from '../../model/campsite.model'
 import { GetCampsiteListAPI } from '../../api/campsite.api'
+import { UserContext } from '../../context/user.context'
 
 export const useCampsiteList = () => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()

@@ -3,8 +3,8 @@ import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { UserModel } from '../../model/user.model'
-import { UserContext } from '../../../App'
 import { GetProfileAPI, LogoutAPI } from '../../api/account.api'
+import { UserContext } from '../../context/user.context'
 
 export const useProfile = () => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()

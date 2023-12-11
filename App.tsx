@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import { Image } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -12,8 +12,7 @@ import Connection from './src/screens/connection/connection.view'
 import CampsiteAdd from './src/screens/campsite/campsite-add.view'
 import CampsiteEdit from './src/screens/campsite/campsite-edit.view'
 import Characteristic from './src/screens/characteristic/characteristic.view'
-
-export const UserContext = createContext<any>(null)
+import { UserContext } from './src/context/user.context'
 
 export default function App() {
     const Tab = createBottomTabNavigator()

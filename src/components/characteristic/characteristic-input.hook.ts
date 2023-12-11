@@ -2,8 +2,8 @@ import { useState, useContext } from 'react'
 import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { UserContext } from '../../../App'
 import { CreateCharacteristicAPI } from '../../api/characteristic.api'
+import { UserContext } from '../../context/user.context'
 
 export const useCharacteristicInput = (type: string) => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()

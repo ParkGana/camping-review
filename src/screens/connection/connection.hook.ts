@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { UserModel } from '../../model/user.model'
 import { RequestConnectionAPI, ResponseConnectionAPI } from '../../api/connection.api'
-import { UserContext } from '../../../App'
 import { GetProfileAPI } from '../../api/account.api'
+import { UserContext } from '../../context/user.context'
 
 export const useConnection = () => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()

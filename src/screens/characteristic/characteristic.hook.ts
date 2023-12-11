@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CharacteristicModel } from '../../model/characteristic.model'
 import { GetCharacteristicListAPI } from '../../api/characteristic.api'
-import { UserContext } from '../../../App'
+import { UserContext } from '../../context/user.context'
 
 export const useCharacteristic = () => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
