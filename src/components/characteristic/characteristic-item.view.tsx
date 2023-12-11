@@ -6,6 +6,7 @@ import { useCharacteristicItem } from './characteristic-item.hook'
 
 const CharacteristicItem = ({ value }: { value: CharacteristicModel }) => {
     const { events } = useCharacteristicItem()
+
     return (
         <View style={styles.Container}>
             <Text style={styles.CharacteristicText}>{value.contents}</Text>

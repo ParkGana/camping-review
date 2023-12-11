@@ -22,6 +22,11 @@ export const useCampsiteDetail = (campsiteId: string) => {
             })
     }, [])
 
+    /* 캠핑장 목록 페이지로 이동 */
+    const moveToBack = () => {
+        navigation.replace('BottomTab', { screen: 'CampsiteList' })
+    }
+
     /* 캠핑장 편집 페이지로 이동 */
     const moveToEdit = () => {
         navigation.replace('CampsiteEdit', { campsiteId })
@@ -32,6 +37,7 @@ export const useCampsiteDetail = (campsiteId: string) => {
             campsite
         },
         events: {
+            moveToBack,
             moveToEdit
         }
     }

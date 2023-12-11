@@ -38,7 +38,7 @@ export async function CreateCampsiteAPI(dto: CampsiteAddDTO): Promise<void> {
 /* 캠핑장 수정 */
 export async function UpdateCampsiteAPI(dto: CampsiteEditDTO): Promise<void> {
     try {
-        await axios.post(`${BaseUrl}/campsite/update`, dto)
+        await axios.put(`${BaseUrl}/campsite/update`, dto)
     } catch (e) {
         throw axios.isAxiosError(e) ? e.response?.data : e
     }
