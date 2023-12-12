@@ -16,13 +16,22 @@ export const styles = StyleSheet.create({
         width: 24,
         height: 18
     },
+    ButtonContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10
+    },
     EditText: {
         color: Color.blue,
         fontSize: Typography.body1.fontSize,
         fontWeight: Typography.body1.fontWeight,
         lineHeight: Typography.body1.lineHeight
     },
-    TravelContainer: {
-        marginTop: 20
+    DeleteText: {
+        color: Color.red,
+        fontSize: Typography.body1.fontSize,
+        fontWeight: Typography.body1.fontWeight,
+        lineHeight: Typography.body1.lineHeight,
+        marginRight: 20
     }
 })

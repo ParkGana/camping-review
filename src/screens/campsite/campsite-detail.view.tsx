@@ -16,9 +16,14 @@ const CampsiteDetail = ({ route }: any) => {
                 <TouchableOpacity onPress={events.moveToBack}>
                     <Image source={require('../../../assets/icons/back.png')} style={styles.BackIcon} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={events.moveToEdit}>
-                    <Text style={styles.EditText}>편집</Text>
-                </TouchableOpacity>
+                <View style={styles.ButtonContainer}>
+                    <TouchableOpacity onPress={events.handleDelete}>
+                        <Text style={styles.DeleteText}>삭제</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={events.moveToEdit}>
+                        <Text style={styles.EditText}>편집</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             {datas.campsite && datas.characteristics && (
                 <CampsiteInfo campsiteValue={datas.campsite} characteristicValue={datas.characteristics} />

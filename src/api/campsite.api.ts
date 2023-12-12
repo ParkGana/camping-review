@@ -55,3 +55,12 @@ export async function UpdateCampsiteAPI(dto: CampsiteEditDTO): Promise<void> {
         throw axios.isAxiosError(e) ? e.response?.data : e
     }
 }
+
+/* 캠핑장 삭제 */
+export async function DeleteCampsiteAPI(campsiteId: string): Promise<void> {
+    try {
+        await axios.delete(`${BaseUrl}/campsite/delete/${campsiteId}`)
+    } catch (e) {
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
