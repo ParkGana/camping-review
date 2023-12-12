@@ -1,5 +1,3 @@
-import { UserModel } from './user.model'
-
 export class CampsiteModel {
     constructor(properties: CampsiteModel) {
         this.id = properties.id
@@ -9,7 +7,6 @@ export class CampsiteModel {
         this.outTime = properties.outTime
         this.type = properties.type
         this.feeling = properties.feeling
-        this.user = new UserModel(properties.user)
     }
 
     id: string
@@ -19,5 +16,4 @@ export class CampsiteModel {
     outTime: string
     type: string
     feeling: string
-    user: UserModel
 }

@@ -26,12 +26,16 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 10
     },
+    CharacteristicDataContainer: {
+        alignItems: 'flex-start'
+    },
     FieldText: {
         width: '20%',
         color: Color.gray,
         fontSize: Typography.body2.fontSize,
         fontWeight: Typography.body2.fontWeight,
-        lineHeight: Typography.body2.lineHeight
+        lineHeight: Typography.body2.lineHeight,
+        paddingVertical: 5
     },
     NameText: {
         width: '80%',
@@ -46,6 +50,13 @@ export const styles = StyleSheet.create({
         fontSize: Typography.body2.fontSize,
         fontWeight: Typography.body2.fontWeight,
         lineHeight: Typography.body2.lineHeight
+    },
+    CharacteristicText: {
+        color: Color.black,
+        fontSize: Typography.body2.fontSize,
+        fontWeight: Typography.body2.fontWeight,
+        lineHeight: Typography.body2.lineHeight,
+        paddingVertical: 5
     },
     TypeContainer: {
         flexDirection: 'row',

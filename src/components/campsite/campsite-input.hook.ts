@@ -1,27 +1,46 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CreateCampsiteAPI, UpdateCampsiteAPI } from '../../api/campsite.api'
 import { CampsiteModel } from '../../model/campsite.model'
 import { UserContext } from '../../context/user.context'
+import { CharacteristicModel } from '../../model/characteristic.model'
+import { GetCharacteristicListAPI } from '../../api/characteristic.api'
 
-export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
+export const useCampsiteInput = (edit?: boolean, campsiteValue?: CampsiteModel, characteristicValue?: string[]) => {
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
     const { userEmail } = useContext(UserContext)
 
-    const [name, setName] = useState<string>(edit && value ? value.name : '')
-    const [address, setAddress] = useState<string>(edit && value ? value.address : '')
-    const [inTime, setInTime] = useState<string>(edit && value ? value.inTime : '')
-    const [outTime, setOutTime] = useState<string>(edit && value ? value.outTime : '')
-    const [types, setTypes] = useState<string[]>(edit && value ? value.type.split(',') : [])
-    const [feeling, setFeeling] = useState<string>(edit && value ? value.feeling : '')
+    const [campsiteCharacteristic, setCampsiteCharacteristic] = useState<CharacteristicModel[]>()
+
+    const [name, setName] = useState<string>(edit && campsiteValue ? campsiteValue.name : '')
+    const [address, setAddress] = useState<string>(edit && campsiteValue ? campsiteValue.address : '')
+    const [inTime, setInTime] = useState<string>(edit && campsiteValue ? campsiteValue.inTime : '')
+    const [outTime, setOutTime] = useState<string>(edit && campsiteValue ? campsiteValue.outTime : '')
+    const [types, setTypes] = useState<string[]>(edit && campsiteValue ? campsiteValue.type.split(',') : [])
+    const [feeling, setFeeling] = useState<string>(edit && campsiteValue ? campsiteValue.feeling : '')
+    const [characteristics, setCharacteristics] = useState<string[]>(
+        edit && characteristicValue ? characteristicValue : []
+    )
+
+    useEffect(() => {
+        GetCharacteristicListAPI(userEmail)
+            .then((characteristicList) => {
+                setCampsiteCharacteristic(characteristicList)
+            })
+            .catch((error) => {
+                Alert.alert('특징 목록 조회 도중에 문제가 발생했습니다.', error.errorMessage, [{ text: '확인' }], {
+                    cancelable: false
+                })
+            })
+    }, [])
 
     /* 이전 페이지로 이동 */
     const moveToBack = () => {
-        edit && value
-            ? navigation.replace('CampsiteDetail', { campsiteId: value.id })
+        edit && campsiteValue
+            ? navigation.replace('CampsiteDetail', { campsiteId: campsiteValue.id })
             : navigation.replace('BottomTab', { screen: 'CampsiteList' })
     }
 
@@ -55,8 +74,17 @@ export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
                 cancelable: false
             })
         } else {
-            edit && value
-                ? UpdateCampsiteAPI({ name, address, inTime, outTime, type: typeStr, feeling, campsiteId: value.id })
+            edit && campsiteValue
+                ? UpdateCampsiteAPI({
+                      name,
+                      address,
+                      inTime,
+                      outTime,
+                      type: typeStr,
+                      feeling,
+                      characteristicIds: characteristics,
+                      campsiteId: campsiteValue.id
+                  })
                       .then(() => {
                           Alert.alert(
                               '캠핑장 수정 완료하였습니다.',
@@ -65,7 +93,7 @@ export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
                                   {
                                       text: '확인',
                                       onPress: () => {
-                                          navigation.replace('CampsiteDetail', { campsiteId: value.id })
+                                          navigation.replace('CampsiteDetail', { campsiteId: campsiteValue.id })
                                       }
                                   }
                               ],
@@ -84,7 +112,16 @@ export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
                               }
                           )
                       })
-                : CreateCampsiteAPI({ name, address, inTime, outTime, type: typeStr, feeling, userEmail })
+                : CreateCampsiteAPI({
+                      name,
+                      address,
+                      inTime,
+                      outTime,
+                      type: typeStr,
+                      feeling,
+                      userEmail,
+                      characteristicIds: characteristics
+                  })
                       .then(() => {
                           Alert.alert(
                               '캠핑장 추가를 완료하였습니다.',
@@ -117,12 +154,14 @@ export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
 
     return {
         datas: {
+            campsiteCharacteristic,
             name,
             address,
             inTime,
             outTime,
             types,
-            feeling
+            feeling,
+            characteristics
         },
         events: {
             setName,
@@ -131,6 +170,7 @@ export const useCampsiteInput = (edit?: boolean, value?: CampsiteModel) => {
             setOutTime,
             setTypes,
             setFeeling,
+            setCharacteristics,
             moveToBack,
             handleAdd
         }

@@ -12,7 +12,9 @@ const CampsiteEdit = ({ route }: any) => {
     return (
         <ScrollView style={styles.Container} showsVerticalScrollIndicator={false}>
             <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
-            {datas.campsite && <CampsiteInput edit value={datas.campsite} />}
+            {datas.campsite && datas.characteristics && (
+                <CampsiteInput edit campsiteValue={datas.campsite} characteristicValue={datas.characteristics} />
+            )}
         </ScrollView>
     )
 }

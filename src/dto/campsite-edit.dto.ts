@@ -5,5 +5,6 @@ export interface CampsiteEditDTO {
     outTime: string
     type: string
     feeling: string
+    characteristicIds: string[]
     campsiteId: string
 }

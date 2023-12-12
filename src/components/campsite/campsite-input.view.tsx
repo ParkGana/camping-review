@@ -6,8 +6,16 @@ import { CampsiteModel } from '../../model/campsite.model'
 
 const campsiteType = ['글램핑', '노지', '오토', '카라반']
 
-const CampsiteInput = ({ edit, value }: { edit?: boolean; value?: CampsiteModel }) => {
-    const { datas, events } = useCampsiteInput(edit, value)
+const CampsiteInput = ({
+    edit,
+    campsiteValue,
+    characteristicValue
+}: {
+    edit?: boolean
+    campsiteValue?: CampsiteModel
+    characteristicValue?: string[]
+}) => {
+    const { datas, events } = useCampsiteInput(edit, campsiteValue, characteristicValue)
 
     return (
         <View>
@@ -111,6 +119,80 @@ const CampsiteInput = ({ edit, value }: { edit?: boolean; value?: CampsiteModel 
                                 style={styles.FeelingIcon}
                             />
                         </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+            <View style={styles.FormContainer}>
+                <View style={[styles.DataContainer, styles.CharacteristicDataContainer]}>
+                    <Text style={styles.FieldText}>장점</Text>
+                    <View>
+                        {datas.campsiteCharacteristic &&
+                            datas.campsiteCharacteristic.map((characteristic, index) => (
+                                <>
+                                    {characteristic.type === 'G' && (
+                                        <TouchableOpacity
+                                            key={index}
+                                            onPress={() =>
+                                                datas.characteristics.includes(characteristic.id)
+                                                    ? events.setCharacteristics(
+                                                          datas.characteristics.filter(
+                                                              (item) => item !== characteristic.id
+                                                          )
+                                                      )
+                                                    : events.setCharacteristics((prev) => {
+                                                          return [...prev, characteristic.id]
+                                                      })
+                                            }
+                                        >
+                                            <Text
+                                                style={[
+                                                    styles.CharacteristicText,
+                                                    datas.characteristics.includes(characteristic.id) &&
+                                                        styles.SelectedCharacteristicText
+                                                ]}
+                                            >
+                                                {characteristic.contents}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    )}
+                                </>
+                            ))}
+                    </View>
+                </View>
+                <View style={[styles.DataContainer, styles.CharacteristicDataContainer]}>
+                    <Text style={styles.FieldText}>단점</Text>
+                    <View>
+                        {datas.campsiteCharacteristic &&
+                            datas.campsiteCharacteristic.map((characteristic, index) => (
+                                <>
+                                    {characteristic.type === 'B' && (
+                                        <TouchableOpacity
+                                            key={index}
+                                            onPress={() =>
+                                                datas.characteristics.includes(characteristic.id)
+                                                    ? events.setCharacteristics(
+                                                          datas.characteristics.filter(
+                                                              (item) => item !== characteristic.id
+                                                          )
+                                                      )
+                                                    : events.setCharacteristics((prev) => {
+                                                          return [...prev, characteristic.id]
+                                                      })
+                                            }
+                                        >
+                                            <Text
+                                                style={[
+                                                    styles.CharacteristicText,
+                                                    datas.characteristics.includes(characteristic.id) &&
+                                                        styles.SelectedCharacteristicText
+                                                ]}
+                                            >
+                                                {characteristic.contents}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    )}
+                                </>
+                            ))}
                     </View>
                 </View>
             </View>

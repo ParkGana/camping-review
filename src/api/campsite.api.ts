@@ -3,6 +3,7 @@ import { BaseUrl } from '../../api.config'
 import { CampsiteModel } from '../model/campsite.model'
 import { CampsiteAddDTO } from '../dto/campsite-add.dto'
 import { CampsiteEditDTO } from '../dto/campsite-edit.dto'
+import { CampsiteCharacteristicModel } from '../model/campsite-characteristic.model'
 
 /* 캠핑장 목록 조회 */
 export async function GetCampsiteListAPI(email: string): Promise<CampsiteModel[]> {
@@ -21,6 +22,17 @@ export async function GetCampsiteDetailAPI(id: string): Promise<CampsiteModel> {
         const campsite = await axios.get(`${BaseUrl}/campsite/${id}`)
 
         return new CampsiteModel(campsite.data)
+    } catch (e) {
+        throw axios.isAxiosError(e) ? e.response?.data : e
+    }
+}
+
+/* 캠핑장 연결 특징 조회 */
+export async function GetCampsiteCharacteristicListAPI(id: string): Promise<CampsiteCharacteristicModel[]> {
+    try {
+        const characteristicList = await axios.get(`${BaseUrl}/campsite-characteristic/connect/${id}`)
+
+        return characteristicList.data.map((v: CampsiteCharacteristicModel) => new CampsiteCharacteristicModel(v))
     } catch (e) {
         throw axios.isAxiosError(e) ? e.response?.data : e
     }

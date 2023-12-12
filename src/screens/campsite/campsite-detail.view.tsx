@@ -20,7 +20,9 @@ const CampsiteDetail = ({ route }: any) => {
                     <Text style={styles.EditText}>편집</Text>
                 </TouchableOpacity>
             </View>
-            {datas.campsite && <CampsiteInfo value={datas.campsite} />}
+            {datas.campsite && datas.characteristics && (
+                <CampsiteInfo campsiteValue={datas.campsite} characteristicValue={datas.characteristics} />
+            )}
         </ScrollView>
     )
 }
