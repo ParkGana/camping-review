@@ -128,7 +128,7 @@ const CampsiteInput = ({
                     <View>
                         {datas.campsiteCharacteristic &&
                             datas.campsiteCharacteristic.map((characteristic, index) => (
-                                <>
+                                <View key={index}>
                                     {characteristic.type === 'G' && (
                                         <TouchableOpacity
                                             key={index}
@@ -155,7 +155,7 @@ const CampsiteInput = ({
                                             </Text>
                                         </TouchableOpacity>
                                     )}
-                                </>
+                                </View>
                             ))}
                     </View>
                 </View>
@@ -164,7 +164,7 @@ const CampsiteInput = ({
                     <View>
                         {datas.campsiteCharacteristic &&
                             datas.campsiteCharacteristic.map((characteristic, index) => (
-                                <>
+                                <View key={index}>
                                     {characteristic.type === 'B' && (
                                         <TouchableOpacity
                                             key={index}
@@ -191,7 +191,7 @@ const CampsiteInput = ({
                                             </Text>
                                         </TouchableOpacity>
                                     )}
-                                </>
+                                </View>
                             ))}
                     </View>
                 </View>
