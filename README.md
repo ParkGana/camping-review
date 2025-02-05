@@ -1,4 +1,4 @@
-# camping-review-app
+# camping-review
 
 ---
 
